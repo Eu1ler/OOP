@@ -1,0 +1,53 @@
+#include <iostream>
+using namespace std;
+
+class Employee{
+    // There are three access modifiers in a class:
+    // public, protected, and private.
+    // By the default, all vars are private.
+    // You must make them public to be accessed.
+public:
+    //By setting the modifier public, functions invokers outside this class is able to call on the
+    // class members inside the class.
+    string Name;
+    string Company;
+    int Age;
+
+    // This function uses the public members of the class in void type function to simply
+    // print name company, and age.
+    void Introduce_Yourself(){
+        cout << "Name- " << Name << endl;
+        cout << "Company- " << Company << endl;
+        cout << "Age- " << Age << endl;
+    }
+    //Constructor's 3 rules:
+    //1. Does not have a return type.
+    //2. It must have the same name as
+    //3. It must be public, though at another lvl it can be private.
+    //The constructor is made from the same name of the class and,
+    //it is made into a function using the same parameters (vars)
+    //inside the class itself: Name,Company,Age.
+    // By making your own constructor, you replace the default one.
+
+    Employee(string name, string company, int age){
+        Name= name;
+        Company= company;
+        Age= age;
+    }
+};
+int main() {
+    // The way that classes are called from the main function are as follows:
+    // First, you use the exact name of the class followed by a name identifier (employee1).
+    // You then assign it(=) to the name of your constructor(Employee).
+    // You constructor has parameters: name, company, age.
+    // You fill those in accordingly.
+    // Finally, you use your name identifier(employee1) and use the dot operator to call
+    // the void function inside the class(Introduce_Yourself.)
+    Employee employee1 = Employee("Oscar","CoolCompany",25);
+    employee1.Introduce_Yourself();
+
+    Employee employee2 = Employee("The dude", "Amazon",38);
+    employee2.Introduce_Yourself();
+
+    return 0;
+}
