@@ -1,0 +1,62 @@
+/*Encapsulation:
+ * Bundling or tying data together(encapsulating) in methods that operate of data, in a single unit.
+ * We used this to prevent anything or anyone from accessing/modifying it directly.
+ */
+#include <iostream>
+using namespace std;
+
+class Employee{
+// These class members are encapsulated:
+private:
+    // The private members are encapsulated and only accesssed by public functions.
+    string Name;
+    string Company;
+    int Age;
+
+public:
+    /*To be able to access the members of the private class Employee,
+     * you create functions and their with their own parameters and assign them
+     * to member variables.
+    */
+    void setName(string name ){
+        Name=name;
+    }
+    string getName(){
+        return Name;
+    }
+    void setCompany (string company){
+        Company=company;
+    }
+    string getCompany(){
+        return Company;
+    }
+    void setAge(int age){
+        Age=age;
+    }
+    int getAge(){
+        return Age;
+    }
+
+    void Introduce_Yourself(){
+        cout << "Name- " << Name << endl;
+        cout << "Company- " << Company << endl;
+        cout << "Age- " << Age << endl;
+    }
+    Employee(string name, string company, int age){
+        Name= name;
+        Company= company;
+        Age= age;
+    } // public up to here.
+};
+int main() {
+
+    Employee employee1 = Employee("Oscar","CoolCompany",25);
+    employee1.Introduce_Yourself();
+
+    Employee employee2 = Employee("The dude", "Amazon",38);
+    employee2.Introduce_Yourself();
+
+    employee1.setAge(39);
+    cout << employee1.getName()<< " is: " << employee1.getAge()<< " years old" << endl;
+    return 0;
+}
