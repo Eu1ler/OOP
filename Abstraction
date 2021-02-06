@@ -1,0 +1,81 @@
+/* Encapsulation:
+ * Bundling or tying data together(encapsulating) in methods that operate of data, in a single unit.
+ * We used this to prevent anything or anyone from accessing/modifying it directly.
+ */
+
+/*
+ * Abstraction is the act of hiding the complexity away from the user
+ * and give them a nice and simple means to navigate
+ */
+#include <iostream>
+using namespace std;
+//Example of abstraction:
+//We implemented a contract in the form of an abstract class and has only one rule
+// and one virtual function.
+//If another programmer wants to use this program, they need not to worry about the virtual class
+//becuase the one who wrote it should have made it correctly and readily available for use.
+//The next person needs not to worry because we save them through the abstraction.
+class AbstractEmployee{
+    //abstract function
+    virtual void AskForPromotion()=0;
+};
+//Abstract class was called here by :AbstractEmployee
+class Employee:AbstractEmployee{
+// These class members are encapsulated:
+private:
+    // The private members are encapsulated and only accessed by public functions.
+    string Name;
+    string Company;
+    int Age;
+
+public:
+    /*To be able to access the members of the private class Employee,
+     * you create functions and their with their own parameters and assign them
+     * to member variables.
+    */
+    void setName(string name ){
+        Name=name;
+    }
+    string getName(){
+        return Name;
+    }
+    void setCompany (string company){
+        Company=company;
+    }
+    string getCompany(){
+        return Company;
+    }
+    void setAge(int age){
+        Age=age;
+    }
+    int getAge(){
+        return Age;
+    }
+
+    void Introduce_Yourself(){
+        cout << "Name- " << Name << endl;
+        cout << "Company- " << Company << endl;
+        cout << "Age- " << Age << endl;
+    }
+    Employee(string name, string company, int age){
+        Name= name;
+        Company= company;
+        Age= age;
+    } // public up to here.
+    void AskForPromotion(){
+        if (Age>30) {
+            cout << Name << " Got Promoted!" << endl;
+        }
+        else
+            cout << Name << " Sorry, no promotion for you." << endl;
+    };
+};
+int main() {
+
+    Employee employee1 = Employee("Oscar","CoolCompany",25);
+    Employee employee2 = Employee("The dude", "Amazon",38);
+
+    employee1.AskForPromotion();
+    employee2.AskForPromotion();
+    return 0;
+}
